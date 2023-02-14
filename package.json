@@ -1,14 +1,19 @@
 {
   "name": "starter-ts",
   "version": "1.0.0",
-  "type": "module",
   "description": "",
-  "main": "src/index.ts",
+  "keywords": [],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "check": "rome check .",
     "format": "rome format . --write"
+  },
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
   },
   "author": "Quincy Qiu",
   "license": "ISC",
