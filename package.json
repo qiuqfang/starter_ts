@@ -4,13 +4,12 @@
   "description": "",
   "keywords": [],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "check": "rome check . --apply-suggested",
     "format": "rome format . --write",
     "prepare": "husky install",
-    "commitizen": "commitizen",
-    "commit": "cz"
+    "commit": "cz",
+    "test": "jest"
   },
   "type": "module",
   "main": "./dist/index.mjs",
@@ -23,15 +22,18 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
+    "@jest/globals": "^29.4.3",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-typescript": "^11.0.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
+    "jest": "^29.4.3",
     "lint-staged": "^13.1.2",
     "rollup": "^3.15.0",
     "rome": "^11.0.0",
+    "ts-jest": "^29.0.5",
     "tslib": "^2.5.0",
     "typescript": "^4.9.5"
   },
