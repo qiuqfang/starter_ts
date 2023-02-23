@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "check": "rome check . --apply-suggested",
-    "format": "rome format . --write"
+    "format": "rome format . --write",
+    "prepare": "husky install",
+    "commitizen": "commitizen",
+    "commit": "cz"
   },
   "type": "module",
   "main": "./dist/index.mjs",
@@ -18,12 +21,29 @@
   "author": "Quincy Qiu",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-typescript": "^11.0.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
     "rollup": "^3.15.0",
     "rome": "^11.0.0",
     "tslib": "^2.5.0",
     "typescript": "^4.9.5"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "rome format --write",
+      "rome check --apply-suggested"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
