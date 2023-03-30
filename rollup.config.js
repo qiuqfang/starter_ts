@@ -4,9 +4,9 @@
 
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
-import babel from "@rollup/plugin-babel";
-import resolve from "@rollup/plugin-node-resolve";
 import del from "rollup-plugin-delete";
+import swc from "@qiuqfang/rollup-plugin-swc";
+import nodeResolve from "@rollup/plugin-node-resolve";
 
 export default {
   input: "./src/index.ts",
@@ -16,8 +16,8 @@ export default {
   ],
 
   plugins: [
-    babel({ babelHelpers: "bundled", extensions: [".ts"] }),
-    resolve({ extensions: [".ts"] }),
+    swc(),
+    nodeResolve({ extensions: [".ts", ".js"] }),
     commonjs(),
     json(),
     del({ targets: "dist/*" }),
