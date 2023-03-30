@@ -6,6 +6,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import del from "rollup-plugin-delete";
 import swc from "@qiuqfang/rollup-plugin-swc";
+import nodeResolve from "@rollup/plugin-node-resolve";
 
 export default {
   input: "./src/index.ts",
@@ -14,5 +15,11 @@ export default {
     { file: "dist/index.mjs", format: "es" },
   ],
 
-  plugins: [swc(), commonjs(), json(), del({ targets: "dist/*" })],
+  plugins: [
+    swc(),
+    nodeResolve({ extensions: [".ts", ".js"] }),
+    commonjs(),
+    json(),
+    del({ targets: "dist/*" }),
+  ],
 };
