@@ -2,9 +2,10 @@
  * @type {import('rollup').RollupOptions}
  */
 
-import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
+import babel from "@rollup/plugin-babel";
+import resolve from "@rollup/plugin-node-resolve";
 import del from "rollup-plugin-delete";
 
 export default {
@@ -14,5 +15,11 @@ export default {
     { file: "dist/index.mjs", format: "es" },
   ],
 
-  plugins: [typescript(), commonjs(), json(), del({ targets: "dist/*" })],
+  plugins: [
+    babel({ babelHelpers: "bundled", extensions: [".ts"] }),
+    resolve({ extensions: [".ts"] }),
+    commonjs(),
+    json(),
+    del({ targets: "dist/*" }),
+  ],
 };
